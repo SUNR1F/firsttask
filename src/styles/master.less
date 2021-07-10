@@ -1,0 +1,150 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    background-color: #fff;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 0px;
+    margin: 0px;
+    height: 1030px;
+}
+
+.header-container {
+    margin: 0px;
+    padding: 0px;
+}
+
+.logo {
+    color: white;
+    background: #0F7BFF;
+    font-size: 36px;
+    float: left;
+    width: 179px;
+    height: 100px;
+    text-align: center;
+    margin-left: 136px;
+    padding-top: 25px;
+    border-bottom-right-radius: 21.5px;
+    border-bottom-left-radius: 21.5px;
+    /*text-decoration: none;*/
+}
+
+.navbar {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav {
+    margin-top: 40px;
+    font-style: medium;
+    text-transform: uppercase;
+
+    > ul {
+
+        li {
+            display: inline;
+            list-style: none;
+    
+            a {
+                text-decoration: none;
+                color: grey;
+      
+                &.active, &:hover {
+                    color: #0F7BFF;
+                }
+            }
+            &:not(:last-child) {
+                margin-right: 50px;
+            }
+        }  
+    } 
+}
+
+.signup {
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+    background-color: #0063DD;
+    width: 165px;
+    height: 50px;
+    border-radius: 25px;
+    padding-top: 15px;
+    margin-top: 25px;
+    margin-right: 140px;
+
+    &:active {
+        background-color: rgb(10, 13, 219);
+    }
+
+}
+
+.title {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 188px;
+
+}
+
+.title-description {
+    text-align: center;
+    line-height: 27px;
+    color: #929292;
+    font-style: regular;
+    padding-bottom: 47px;
+}
+
+.btn-header {
+    text-align: center;
+}
+
+.btn-download {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    background-color: #0F7BFF;
+    width: 166px;
+    height: 50px;
+    border-radius: 25px;
+    padding: 14px 44px 20px;
+    font-weight: 700;
+    margin-right: 15px;
+
+    &:active {
+        background-color: rgb(10, 13, 219);  
+    }
+    
+}
+
+.btn-freetrial {
+    color: #0F7BFF;
+    text-decoration: none;
+    text-align: center;
+    border-style: solid;
+    border-color: #0F7BFF;
+    border-width: 2px;
+    border-radius: 25px;
+    padding: 14px 44px 20px;
+    font-weight: 700;
+    margin-left: 15px;
+}
