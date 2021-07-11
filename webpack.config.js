@@ -1,10 +1,9 @@
 const path = require('path'),
-    HtmlWebpackPlugin = require('html-webpack-plugin'),
-    HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
-
+    HtmlWebpackPlugin = require('html-webpack-plugin');
+    const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MASTER_JS_FILE = './src/scripts/master.js',
     MASTER_HTML_FILE = './src/index.html',
-    OUTPUT_FOLDER = 'public',
+    OUTPUT_FOLDER = 'dist',
     OUTPUT_MASTER_JS = '[name].bundle.js';
 
 module.exports = env => {
@@ -38,9 +37,15 @@ module.exports = env => {
                     test: /\.less$/,
                     use: ['style-loader', 'css-loader', 'less-loader']
                 }, {
-                    test: /\.(jpe?g|png|gif|ico|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-                    use: 'base64-inline-loader?limit=1000&name=[name].[ext]'
-                }
+                    test: /.(jpe?g|png|gif|svg|ico)$/i,
+                    use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'img/'
+                        }
+                    }]
+                },
             ]
         },
 
@@ -49,7 +54,7 @@ module.exports = env => {
             : 'none', // Disabled on production
 
         devServer: {
-            contentBase: `./${OUTPUT_FOLDER}`,
+            contentBase: path.join(__dirname, OUTPUT_FOLDER),
             compress: true,
             port: 8000
         },
@@ -72,8 +77,14 @@ function getHtmlWebpackPluginOpt(env) {
 
 function getPlugins(env) {
     const plugins = [
-        new HtmlWebpackPlugin(getHtmlWebpackPluginOpt(env)),
-        new HtmlWebpackInlineSourcePlugin()
+        new CopyWebpackPlugin({
+            patterns: [
+              { from:'./src/img',to:'img' },
+            ],
+          }),
+          new HtmlWebpackPlugin({
+            template: 'src/index.html'
+          }),
     ];
     return plugins;
 }
